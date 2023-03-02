@@ -1,0 +1,37 @@
+balance = 100
+paswrd = 1234
+chance = 1
+
+print("Welcome to the ATM, Kindly follow the instructions")
+# user_press = input("press enter")
+
+while True:
+    user_pswrd = int(input("Enter the pin: "))
+    if user_pswrd == paswrd:
+        while chance<3:
+            print("\nPress 1 for balance inquiry")
+            print("Press 2 for cash withdrawal")
+            print("Press 3 for deposit\n")
+            user_inp = int(input())
+            if user_inp == 1:
+                print(f"your balance is Rs {balance}/-")
+            elif user_inp == 2:
+                withdraw = int(input("Enter the amount you want to withdraw "))
+                if balance < withdraw:
+                    print("Insufficient Balance")
+                else:
+                    balance = balance-withdraw
+            elif user_inp == 3:
+                deposit = int(input("Enter the amount you want to deposit "))
+                balance = balance + deposit
+            user_resp = input("Do you want to execute any other thing?? y/n ").upper()
+            if user_resp == "N":
+                print("Thank you for visit")
+                exit()
+
+    else:
+        print("wrong input")
+        print(f"you have remain {3 - chance} chances")
+        chance += 1
+        if chance == 4:
+            exit()
